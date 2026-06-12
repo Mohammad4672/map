@@ -1,219 +1,192 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رسالة من المستقبل إلى رُبى ✨</title>
+<title>Cyberpunk Access</title>
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Tahoma',sans-serif;
+font-family:Consolas,monospace;
 }
 body{
+background:#050505;
 overflow:hidden;
-height:100vh;
-background:linear-gradient(135deg,#ffe4ec,#fff7d6,#dff6ff);
+color:#00ff99;
 }
-video{
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
+}
+#overlay{
 position:fixed;
 inset:0;
-width:100%;
+background:radial-gradient(circle at center,
+rgba(0,255,180,.08),
+transparent 60%);
+z-index:-1;
+}
+#terminal{
+padding:25px;
+font-size:20px;
+line-height:1.7;
+height:100vh;
+overflow:hidden;
+}
+.line{
+margin-bottom:6px;
+}
+#progressBox{
+position:fixed;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+width:80%;
+height:24px;
+border:2px solid #00ff99;
+}
+#progress{
 height:100%;
-object-fit:cover;
-opacity:.08;
-pointer-events:none;
+width:0%;
+background:#00ff99;
 }
-.screen{
-position:absolute;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-transition:1s;
+.glitch{
+animation:glitch .08s infinite;
 }
-#intro{
-background:rgba(255,255,255,.35);
-backdrop-filter:blur(10px);
-}
-.envelope{
-font-size:150px;
-cursor:pointer;
-transition:.4s;
-}
-.envelope:hover{
-transform:scale(1.08);
-}
-.click{
-margin-top:20px;
-font-size:24px;
-color:#555;
-}
-#letter{
-display:none;
-padding:40px;
-}
-.paper{
-background:white;
-width:min(90%,800px);
-padding:40px;
-border-radius:25px;
-box-shadow:0 20px 50px rgba(0,0,0,.15);
-text-align:right;
-line-height:2;
-font-size:24px;
-color:#444;
-animation:appear 1.5s;
-}
-@keyframes appear{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-#magic{
-display:none;
-background:linear-gradient(180deg,#dff6ff,#fff0f6);
-}
-.butterfly,
-.flower{
-position:absolute;
-font-size:40px;
-animation:float 6s infinite ease-in-out;
-}
-@keyframes float{
-50%{
-transform:translateY(-25px);
-}
+@keyframes glitch{
+0%{transform:translate(2px,0);}
+50%{transform:translate(-2px,0);}
+100%{transform:translate(2px,0);}
 }
 #final{
 display:none;
-background:rgba(255,255,255,.9);
+position:fixed;
+inset:0;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:rgba(0,0,0,.9);
 text-align:center;
 }
 #final h1{
 font-size:90px;
-color:#ff4f8b;
-margin-bottom:20px;
+color:#00ffcc;
+text-shadow:
+0 0 15px #00ffcc,
+0 0 30px #00ffcc,
+0 0 60px #00ffcc;
+}
+#final h2{
+margin-top:20px;
+font-size:40px;
+color:#fff;
 }
 #final p{
-font-size:30px;
-line-height:2;
-color:#444;
-}
-.spark{
-position:absolute;
-font-size:28px;
-animation:fall 4s linear forwards;
-}
-@keyframes fall{
-from{
-transform:translateY(-100px);
-opacity:1;
-}
-to{
-transform:translateY(110vh);
-opacity:0;
-}
+margin-top:25px;
+font-size:26px;
+max-width:800px;
+color:#ddd;
+line-height:1.8;
 }
 </style>
 </head>
 <body>
-<video autoplay muted loop>
+<video id="music" autoplay loop style="display:none">
 <source src="music.mp4" type="video/mp4">
 </video>
-<video id="music" loop style="display:none">
-<source src="music.mp4" type="video/mp4">
-</video>
-<div class="screen" id="intro">
-<div class="envelope" onclick="openLetter()">✉️</div>
-<div class="click">اضغطي على الرسالة ✨</div>
+<canvas id="matrix"></canvas>
+<div id="overlay"></div>
+<div id="terminal"></div>
+<div id="progressBox">
+<div id="progress"></div>
 </div>
-<div class="screen" id="letter">
-<div class="paper">
-<h2>إلى رُبى... 💌</h2>
-<br>
-مرحباً رُبى،
-<br><br>
-أنا رُبى من المستقبل...
-<br><br>
-حبيت أخبرك إن كل التعب اللي عشتيه كان مستاهل.
-<br><br>
-كل ليلة سهر...
-وكل لحظة توتر...
-وكل امتحان خفتي منه...
-صار مجرد ذكرى.
-<br><br>
-لأنك ما استسلمتي ❤️
-<br><br>
-ولأنك كملتي وقت غيرك كان ممكن يوقف.
-<br><br>
-واليوم...
-أنا فخورة فيكي جداً 🌹✨
-</div>
-</div>
-<div class="screen" id="magic"></div>
-<div class="screen" id="final">
-<h1>🌹 Ruba 🌹</h1>
+<div id="final">
+<h1>RUBA</h1>
+<h2>ACCESS GRANTED ✅</h2>
 <p>
-One More Thing... ✨
-<br><br>
-إنتِ أقوى مما بتتصوري ❤️
-<br>
-وأجمل مما بتعرفي 🌸
-<br>
-وأقرب للنجاح مما بتتخيلي 🏆
-<br><br>
-The Story Is Just Beginning...
+Effort Analysis Complete...<br>
+Dedication: 100%<br>
+Courage: MAXIMUM<br>
+Persistence: LEGENDARY<br><br>
+🏆 STATUS UPDATED<br>
+STUDENT → LEGEND
 </p>
 </div>
 <script>
-function openLetter(){
-document.getElementById("intro").style.display="none";
-document.getElementById("letter").style.display="flex";
-document.getElementById("music").play().catch(()=>{});
-setTimeout(showMagic,12000);
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const size=16;
+const cols=Math.floor(canvas.width/size);
+const drops=Array(cols).fill(1);
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#00ff99";
+ctx.font=size+"px monospace";
+for(let i=0;i<drops.length;i++){
+const text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text,i*size,drops[i]*size);
+if(drops[i]*size>canvas.height && Math.random()>0.975){
+drops[i]=0;
 }
-function showMagic(){
-document.getElementById("letter").style.display="none";
-const magic=document.getElementById("magic");
-magic.style.display="flex";
-for(let i=0;i<40;i++){
-let f=document.createElement("div");
-f.className="flower";
-f.innerHTML=["🌸","🌹","🌷","💐"][Math.floor(Math.random()*4)];
-f.style.left=Math.random()*100+"vw";
-f.style.top=Math.random()*100+"vh";
-magic.appendChild(f);
+drops[i]++;
 }
-for(let i=0;i<25;i++){
-let b=document.createElement("div");
-b.className="butterfly";
-b.innerHTML="🦋";
-b.style.left=Math.random()*100+"vw";
-b.style.top=Math.random()*100+"vh";
-magic.appendChild(b);
 }
-setTimeout(showFinal,7000);
+setInterval(draw,35);
+const lines=[
+"[SYSTEM] Connecting...",
+"[SYSTEM] Accessing Exam Database...",
+"[SYSTEM] Searching Student...",
+"[FOUND] RUBA",
+"[SCAN] Study Hours...",
+"[OK] 999 Hours Detected",
+"[SCAN] Determination...",
+"[OK] LEGENDARY",
+"[SCAN] Stress Resistance...",
+"[OK] MAXIMUM",
+"[SCAN] Success Probability...",
+"[OK] 100%",
+"[DECRYPT] Hidden Future...",
+"[SUCCESS] FILE UNLOCKED"
+];
+const terminal=document.getElementById("terminal");
+const progress=document.getElementById("progress");
+let index=0;
+let percent=0;
+function nextLine(){
+if(index>=lines.length){
+launchFinal();
+return;
 }
-function showFinal(){
-document.getElementById("magic").style.display="none";
+let div=document.createElement("div");
+div.className="line";
+div.textContent=lines[index];
+terminal.appendChild(div);
+percent+=100/lines.length;
+progress.style.width=percent+"%";
+if(index===10){
+document.body.classList.add("glitch");
+setTimeout(()=>{
+document.body.classList.remove("glitch");
+},1200);
+}
+index++;
+setTimeout(nextLine,900);
+}
+function launchFinal(){
+document.getElementById("progressBox").style.display="none";
+setTimeout(()=>{
 document.getElementById("final").style.display="flex";
-for(let i=0;i<250;i++){
-let s=document.createElement("div");
-s.className="spark";
-s.innerHTML=["✨","💖","🌸","🎉","🌹"][Math.floor(Math.random()*5)];
-s.style.left=Math.random()*100+"vw";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),4000);
+},1000);
 }
-}
+nextLine();
 </script>
 </body>
 </html>
