@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حديقة رُبى السحرية 🌹✨</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(to bottom,#050816,#0f172a,#1e293b);
+font-family:Tahoma,sans-serif;
+position:relative;
+}
+
+#start{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:100;
+background:rgba(0,0,0,.6);
+color:white;
+backdrop-filter:blur(5px);
+}
+
+#start button{
+padding:18px 35px;
+font-size:24px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.2;}
+to{opacity:1;}
+}
+
+.flower{
+position:absolute;
+font-size:45px;
+bottom:-80px;
+animation:growFlower 4s forwards;
+}
+
+@keyframes growFlower{
+from{
+transform:translateY(100px) scale(0);
+opacity:0;
+}
+to{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+}
+
+.sparkle{
+position:absolute;
+color:#fff7a8;
+font-size:18px;
+animation:spark 3s linear forwards;
+}
+
+@keyframes spark{
+from{
+transform:translateY(0) scale(0);
+opacity:1;
+}
+to{
+transform:translateY(-120px) scale(1.5);
+opacity:0;
+}
+}
+
+#message{
+position:absolute;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+background:rgba(0,0,0,.75);
+color:white;
+padding:20px;
+z-index:50;
+animation:fadeIn 2s;
+}
+
+#message h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+#message p{
+font-size:28px;
+max-width:800px;
+line-height:1.8;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+</style>
+</head>
+<body>
+
+<div id="start">
+<h1 style="margin-bottom:25px;">🌙 حديقة رُبى السحرية 🌙</h1>
+<button onclick="begin()">اضغطي هون ✨</button>
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="message">
+<h1>🌹 رُبى 🌹</h1>
+
+<p>
+كل نجمة بالسما بتحكي عن ليلة سهرتيها ✨<br>
+وكل وردة بهالحديقة بتحكي عن خطوة مشيتيها 🌷<br><br>
+
+تعبك ما راح هدر...<br>
+ووصولك لهون بحد ذاتو إنجاز كبير ❤️<br><br>
+
+مبروك يا رُبى 🌹🏆✨
+</p>
+</div>
+
+<script>
+
+for(let i=0;i<180;i++){
+let star=document.createElement("div");
+star.className="star";
+
+let size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDuration=(1+Math.random()*4)+"s";
+
+document.body.appendChild(star);
+}
+
+function begin(){
+
+document.getElementById("start").style.display="none";
+
+const music=document.getElementById("music");
+music.play().catch(()=>{});
+
+const flowers=["🌹","🌷","🌺","🌸","💐"];
+
+let count=0;
+
+const grow=setInterval(()=>{
+
+let flower=document.createElement("div");
+flower.className="flower";
+
+flower.innerHTML=
+flowers[Math.floor(Math.random()*flowers.length)];
+
+flower.style.left=Math.random()*95+"vw";
+
+document.body.appendChild(flower);
+
+for(let i=0;i<3;i++){
+
+let sparkle=document.createElement("div");
+sparkle.className="sparkle";
+sparkle.innerHTML="✨";
+
+sparkle.style.left=flower.style.left;
+sparkle.style.bottom="100px";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>sparkle.remove(),3000);
+}
+
+count++;
+
+if(count>=80){
+
+clearInterval(grow);
+
+setTimeout(()=>{
+document.getElementById("message").style.display="flex";
+},3000);
+}
+
+},180);
+
+}
+</script>
+
+</body>
+</html>
