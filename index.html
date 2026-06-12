@@ -3,220 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حديقة رُبى السحرية 🌹✨</title>
+<title>حديقة رُبى المضيئة 🌹✨</title>
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-background:linear-gradient(to bottom,#050816,#0f172a,#1e293b);
-font-family:Tahoma,sans-serif;
-position:relative;
+    height:100vh;
+    overflow:hidden;
+    font-family:Tahoma,sans-serif;
+    background:linear-gradient(to top,#c8f7c5,#dff6ff,#fff0f6);
+    position:relative;
 }
 
 #start{
-position:absolute;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:100;
-background:rgba(0,0,0,.6);
-color:white;
-backdrop-filter:blur(5px);
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:rgba(255,255,255,.4);
+    backdrop-filter:blur(8px);
+    z-index:100;
+}
+
+#start h1{
+    color:#ff4d8d;
+    margin-bottom:25px;
+    text-align:center;
 }
 
 #start button{
-padding:18px 35px;
-font-size:24px;
-border:none;
-border-radius:15px;
-cursor:pointer;
+    padding:18px 35px;
+    font-size:24px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
-.star{
-position:absolute;
-background:white;
-border-radius:50%;
-animation:twinkle 2s infinite alternate;
+.cloud{
+    position:absolute;
+    font-size:50px;
+    animation:moveCloud 30s linear infinite;
 }
 
-@keyframes twinkle{
-from{opacity:.2;}
-to{opacity:1;}
+@keyframes moveCloud{
+    from{transform:translateX(-200px);}
+    to{transform:translateX(120vw);}
 }
 
 .flower{
-position:absolute;
-font-size:45px;
-bottom:-80px;
-animation:growFlower 4s forwards;
+    position:absolute;
+    bottom:-150px;
+    font-size:80px;
+    animation:growFlower 5s forwards;
 }
 
 @keyframes growFlower{
-from{
-transform:translateY(100px) scale(0);
-opacity:0;
-}
-to{
-transform:translateY(0) scale(1);
-opacity:1;
-}
+    from{
+        transform:translateY(300px) scale(0);
+        opacity:0;
+    }
+    to{
+        transform:translateY(-350px) scale(1.2);
+        opacity:1;
+    }
 }
 
 .sparkle{
-position:absolute;
-color:#fff7a8;
-font-size:18px;
-animation:spark 3s linear forwards;
+    position:absolute;
+    font-size:20px;
+    animation:spark 3s linear forwards;
 }
 
 @keyframes spark{
-from{
-transform:translateY(0) scale(0);
-opacity:1;
-}
-to{
-transform:translateY(-120px) scale(1.5);
-opacity:0;
-}
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-150px);
+        opacity:0;
+    }
 }
 
 #message{
-position:absolute;
-inset:0;
-display:none;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-background:rgba(0,0,0,.75);
-color:white;
-padding:20px;
-z-index:50;
-animation:fadeIn 2s;
+    position:absolute;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:rgba(255,255,255,.85);
+    z-index:50;
+    padding:20px;
 }
 
 #message h1{
-font-size:55px;
-margin-bottom:20px;
+    color:#ff4d8d;
+    font-size:60px;
+    margin-bottom:20px;
 }
 
 #message p{
-font-size:28px;
-max-width:800px;
-line-height:1.8;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+    color:#444;
+    font-size:28px;
+    max-width:800px;
+    line-height:1.8;
 }
 </style>
 </head>
 <body>
 
 <div id="start">
-<h1 style="margin-bottom:25px;">🌙 حديقة رُبى السحرية 🌙</h1>
-<button onclick="begin()">اضغطي هون ✨</button>
+    <h1>🌷 حديقة رُبى المضيئة 🌷</h1>
+    <button onclick="begin()">اضغطي هون 🌹</button>
 </div>
 
 <audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div id="message">
-<h1>🌹 رُبى 🌹</h1>
+    <h1>🌹 رُبى 🌹</h1>
 
-<p>
-كل نجمة بالسما بتحكي عن ليلة سهرتيها ✨<br>
-وكل وردة بهالحديقة بتحكي عن خطوة مشيتيها 🌷<br><br>
+    <p>
+        مثل هالورود اللي مليت الحديقة 🌷<br>
+        مليتي الأيام تعب وإصرار وأمل ✨<br><br>
 
-تعبك ما راح هدر...<br>
-ووصولك لهون بحد ذاتو إنجاز كبير ❤️<br><br>
+        وكل خطوة مشيتيها قرّبتك أكتر من النجاح 🏆<br><br>
 
-مبروك يا رُبى 🌹🏆✨
-</p>
+        مبروك من القلب ❤️<br>
+        وبتستاهلي كل الفرح بالعالم 🌸✨
+    </p>
 </div>
 
 <script>
 
-for(let i=0;i<180;i++){
-let star=document.createElement("div");
-star.className="star";
-
-let size=Math.random()*3+1;
-
-star.style.width=size+"px";
-star.style.height=size+"px";
-star.style.left=Math.random()*100+"vw";
-star.style.top=Math.random()*100+"vh";
-star.style.animationDuration=(1+Math.random()*4)+"s";
-
-document.body.appendChild(star);
+// غيوم
+for(let i=0;i<8;i++){
+    let cloud=document.createElement("div");
+    cloud.className="cloud";
+    cloud.innerHTML="☁️";
+    cloud.style.top=Math.random()*40+"vh";
+    cloud.style.animationDuration=(20+Math.random()*20)+"s";
+    document.body.appendChild(cloud);
 }
 
 function begin(){
 
-document.getElementById("start").style.display="none";
+    document.getElementById("start").style.display="none";
 
-const music=document.getElementById("music");
-music.play().catch(()=>{});
+    const music=document.getElementById("music");
+    music.play().catch(()=>{});
 
-const flowers=["🌹","🌷","🌺","🌸","💐"];
+    const flowers=["🌹","🌷","🌺","🌸","💐"];
 
-let count=0;
+    let count=0;
 
-const grow=setInterval(()=>{
+    const interval=setInterval(()=>{
 
-let flower=document.createElement("div");
-flower.className="flower";
+        let flower=document.createElement("div");
+        flower.className="flower";
+        flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
 
-flower.innerHTML=
-flowers[Math.floor(Math.random()*flowers.length)];
+        flower.style.left=Math.random()*95+"vw";
 
-flower.style.left=Math.random()*95+"vw";
+        document.body.appendChild(flower);
 
-document.body.appendChild(flower);
+        for(let i=0;i<4;i++){
 
-for(let i=0;i<3;i++){
+            let sparkle=document.createElement("div");
+            sparkle.className="sparkle";
+            sparkle.innerHTML="✨";
 
-let sparkle=document.createElement("div");
-sparkle.className="sparkle";
-sparkle.innerHTML="✨";
+            sparkle.style.left=flower.style.left;
+            sparkle.style.bottom="200px";
 
-sparkle.style.left=flower.style.left;
-sparkle.style.bottom="100px";
+            document.body.appendChild(sparkle);
 
-document.body.appendChild(sparkle);
+            setTimeout(()=>sparkle.remove(),3000);
+        }
 
-setTimeout(()=>sparkle.remove(),3000);
-}
+        count++;
 
-count++;
+        if(count>=120){
 
-if(count>=80){
+            clearInterval(interval);
 
-clearInterval(grow);
+            setTimeout(()=>{
+                document.getElementById("message").style.display="flex";
+            },4000);
+        }
 
-setTimeout(()=>{
-document.getElementById("message").style.display="flex";
-},3000);
-}
-
-},180);
-
+    },120);
 }
 </script>
 
