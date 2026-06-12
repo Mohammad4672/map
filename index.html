@@ -3,201 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رحلة رُبى للنجاح 🦋🌹</title>
+<title>رسالة من المستقبل إلى رُبى ✨</title>
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Tahoma,sans-serif;
+font-family:'Tahoma',sans-serif;
 }
 body{
 overflow:hidden;
 height:100vh;
-background:linear-gradient(to top,#c7f9cc,#d8f3ff,#fff0f6);
-position:relative;
+background:linear-gradient(135deg,#ffe4ec,#fff7d6,#dff6ff);
 }
-#bgVideo{
+video{
 position:fixed;
-top:0;
-left:0;
+inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
 opacity:.08;
 pointer-events:none;
 }
-#start{
+.screen{
 position:absolute;
 inset:0;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:10;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(5px);
+flex-direction:column;
+transition:1s;
 }
-#start h1{
-font-size:55px;
-color:#ff4f8b;
-margin-bottom:20px;
+#intro{
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(10px);
 }
-#start button{
-padding:18px 35px;
-font-size:24px;
-border:none;
-border-radius:20px;
+.envelope{
+font-size:150px;
 cursor:pointer;
+transition:.4s;
 }
-#game{
+.envelope:hover{
+transform:scale(1.08);
+}
+.click{
+margin-top:20px;
+font-size:24px;
+color:#555;
+}
+#letter{
 display:none;
-width:100%;
-height:100%;
-position:relative;
+padding:40px;
 }
-#butterfly{
-position:absolute;
-font-size:70px;
-transition:1s ease;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
+.paper{
+background:white;
+width:min(90%,800px);
+padding:40px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,.15);
+text-align:right;
+line-height:2;
+font-size:24px;
+color:#444;
+animation:appear 1.5s;
 }
+@keyframes appear{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+#magic{
+display:none;
+background:linear-gradient(180deg,#dff6ff,#fff0f6);
+}
+.butterfly,
 .flower{
 position:absolute;
-font-size:50px;
-cursor:pointer;
-animation:float 3s infinite ease-in-out;
+font-size:40px;
+animation:float 6s infinite ease-in-out;
 }
 @keyframes float{
-50%{transform:translateY(-15px);}
+50%{
+transform:translateY(-25px);
 }
-#message{
-position:absolute;
-top:40px;
-width:100%;
-text-align:center;
-font-size:28px;
-color:#444;
-font-weight:bold;
 }
 #final{
 display:none;
-position:absolute;
-inset:0;
-justify-content:center;
-align-items:center;
-flex-direction:column;
+background:rgba(255,255,255,.9);
 text-align:center;
-background:rgba(255,255,255,.92);
-z-index:20;
-padding:20px;
 }
 #final h1{
-font-size:70px;
+font-size:90px;
 color:#ff4f8b;
 margin-bottom:20px;
 }
 #final p{
 font-size:30px;
-line-height:1.8;
+line-height:2;
 color:#444;
 }
-.confetti{
+.spark{
 position:absolute;
-font-size:30px;
+font-size:28px;
 animation:fall 4s linear forwards;
 }
 @keyframes fall{
 from{
 transform:translateY(-100px);
+opacity:1;
 }
 to{
 transform:translateY(110vh);
+opacity:0;
 }
 }
 </style>
 </head>
 <body>
-<video id="bgVideo" loop>
+<video autoplay muted loop>
 <source src="music.mp4" type="video/mp4">
 </video>
-<div id="start">
-<h1>🦋 رحلة رُبى السحرية 🦋</h1>
-<button onclick="startJourney()">ابدئي الرحلة 🌸</button>
+<video id="music" loop style="display:none">
+<source src="music.mp4" type="video/mp4">
+</video>
+<div class="screen" id="intro">
+<div class="envelope" onclick="openLetter()">✉️</div>
+<div class="click">اضغطي على الرسالة ✨</div>
 </div>
-<div id="game">
-<div id="message">اضغطي على الوردة الأولى 🌸</div>
-<div id="butterfly">🦋</div>
+<div class="screen" id="letter">
+<div class="paper">
+<h2>إلى رُبى... 💌</h2>
+<br>
+مرحباً رُبى،
+<br><br>
+أنا رُبى من المستقبل...
+<br><br>
+حبيت أخبرك إن كل التعب اللي عشتيه كان مستاهل.
+<br><br>
+كل ليلة سهر...
+وكل لحظة توتر...
+وكل امتحان خفتي منه...
+صار مجرد ذكرى.
+<br><br>
+لأنك ما استسلمتي ❤️
+<br><br>
+ولأنك كملتي وقت غيرك كان ممكن يوقف.
+<br><br>
+واليوم...
+أنا فخورة فيكي جداً 🌹✨
 </div>
-<div id="final">
-<h1>🌹 رُبى 🌹</h1>
+</div>
+<div class="screen" id="magic"></div>
+<div class="screen" id="final">
+<h1>🌹 Ruba 🌹</h1>
 <p>
-يمكن الطريق ما كان سهل...<br><br>
-لكنّك كملتي للآخر ❤️<br>
-وتعبك ما راح هدر ✨<br><br>
-كل وردة جمعتيها بهالرحلة<br>
-بتمثل خطوة من تعبك وإصرارك 🌸<br><br>
-مبروك يا رُبى 🏆💖✨
+One More Thing... ✨
+<br><br>
+إنتِ أقوى مما بتتصوري ❤️
+<br>
+وأجمل مما بتعرفي 🌸
+<br>
+وأقرب للنجاح مما بتتخيلي 🏆
+<br><br>
+The Story Is Just Beginning...
 </p>
 </div>
 <script>
-const messages = [
-"كان في بنت قوية ما استسلمت 🌸",
-"سهرت وتعبت حتى توصل 🌙",
-"واجهت الامتحانات بشجاعة ✍️",
-"كل خطوة قربتها من حلمها ✨",
-"وصلت رُبى للنجاح 🌹🏆"
-];
-let collected = 0;
-function startJourney(){
-document.getElementById("start").style.display="none";
-document.getElementById("game").style.display="block";
-const video=document.getElementById("bgVideo");
-video.play().catch(()=>{});
-spawnFlower();
+function openLetter(){
+document.getElementById("intro").style.display="none";
+document.getElementById("letter").style.display="flex";
+document.getElementById("music").play().catch(()=>{});
+setTimeout(showMagic,12000);
 }
-function spawnFlower(){
-const flower=document.createElement("div");
-flower.className="flower";
-flower.innerHTML=["🌸","🌷","🌹","💐"][Math.floor(Math.random()*4)];
-flower.style.left=Math.random()*85+"vw";
-flower.style.top=(15+Math.random()*65)+"vh";
-flower.onclick=function(){
-moveButterfly(flower.offsetLeft,flower.offsetTop);
-setTimeout(()=>{
-flower.remove();
-document.getElementById("message").innerHTML=
-messages[collected];
-collected++;
-if(collected<5){
-spawnFlower();
-}else{
-finishJourney();
+function showMagic(){
+document.getElementById("letter").style.display="none";
+const magic=document.getElementById("magic");
+magic.style.display="flex";
+for(let i=0;i<40;i++){
+let f=document.createElement("div");
+f.className="flower";
+f.innerHTML=["🌸","🌹","🌷","💐"][Math.floor(Math.random()*4)];
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+magic.appendChild(f);
 }
-},1000);
-};
-document.getElementById("game").appendChild(flower);
+for(let i=0;i<25;i++){
+let b=document.createElement("div");
+b.className="butterfly";
+b.innerHTML="🦋";
+b.style.left=Math.random()*100+"vw";
+b.style.top=Math.random()*100+"vh";
+magic.appendChild(b);
 }
-function moveButterfly(x,y){
-const butterfly=document.getElementById("butterfly");
-butterfly.style.left=x+"px";
-butterfly.style.top=y+"px";
+setTimeout(showFinal,7000);
 }
-function finishJourney(){
-setTimeout(()=>{
-document.getElementById("game").style.display="none";
+function showFinal(){
+document.getElementById("magic").style.display="none";
 document.getElementById("final").style.display="flex";
-for(let i=0;i<200;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.innerHTML=["🎉","✨","🌸","💖","🌹"][Math.floor(Math.random()*5)];
-c.style.left=Math.random()*100+"vw";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),4000);
+for(let i=0;i<250;i++){
+let s=document.createElement("div");
+s.className="spark";
+s.innerHTML=["✨","💖","🌸","🎉","🌹"][Math.floor(Math.random()*5)];
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),4000);
 }
-},1500);
 }
 </script>
 </body>
