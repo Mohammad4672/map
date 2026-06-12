@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قضية رُبى ضد الامتحانات ⚖️</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,sans-serif;
+}
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(180deg,#1d1b1b,#3b2f1f,#7a5c2e);
+color:white;
+}
+.screen{
+position:absolute;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+.active{
+display:flex;
+}
+h1{
+font-size:60px;
+margin-bottom:20px;
+}
+p{
+font-size:28px;
+line-height:1.8;
+max-width:900px;
+}
+#start button{
+padding:18px 35px;
+font-size:24px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+}
+.scale{
+font-size:120px;
+animation:swing 3s ease-in-out infinite;
+}
+@keyframes swing{
+0%,100%{transform:rotate(-8deg);}
+50%{transform:rotate(8deg);}
+}
+.gavel{
+font-size:140px;
+animation:hammer 1s infinite alternate;
+}
+@keyframes hammer{
+from{transform:rotate(0deg);}
+to{transform:rotate(-20deg);}
+}
+.certificate{
+background:#fff8dc;
+color:#333;
+padding:30px;
+border-radius:20px;
+max-width:800px;
+border:6px solid gold;
+box-shadow:0 0 30px rgba(255,215,0,.5);
+}
+.certificate h2{
+color:#7a5c2e;
+margin-bottom:20px;
+}
+.final-name{
+font-size:90px;
+color:gold;
+text-shadow:0 0 20px gold;
+}
+.confetti{
+position:absolute;
+font-size:30px;
+animation:fall 5s linear forwards;
+}
+@keyframes fall{
+from{
+transform:translateY(-100px);
+opacity:1;
+}
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+<video id="music" loop style="display:none">
+<source src="music.mp4" type="video/mp4">
+</video>
+<div class="screen active" id="start">
+<h1>🏛️ المحكمة العليا للنجاح 🏛️</h1>
+<p>القضية رقم: RUBA-2026</p>
+<br>
+<button onclick="startCourt()">بدء الجلسة ⚖️</button>
+</div>
+<div class="screen" id="court">
+<div class="scale">⚖️</div>
+<h1>جلسة المحاكمة</h1>
+<p id="evidence"></p>
+</div>
+<div class="screen" id="judge">
+<div class="gavel">🔨</div>
+<h1>جاري إصدار الحكم...</h1>
+</div>
+<div class="screen" id="certificate">
+<div class="certificate">
+<h2>📜 شهادة المحكمة العليا للنجاح</h2>
+<p>
+بعد مراجعة جميع الأدلة المقدمة للمحكمة،
+تبين بما لا يدع مجالاً للشك أن:
+</p>
+<br>
+<h1 style="color:#b8860b;">🌹 رُبى 🌹</h1>
+<p>
+قد أظهرت إصراراً واجتهاداً وصبراً استثنائياً
+خلال رحلتها الدراسية.
+</p>
+</div>
+</div>
+<div class="screen" id="final">
+<div class="final-name">🌹 رُبى 🌹</div>
+<h1>⚖️ الحكم النهائي ⚖️</h1>
+<p>
+مذنبة بالاجتهاد الزائد 😄
+<br><br>
+والعقوبة:
+<br>
+🏆 النجاح والتفوق 🏆
+<br><br>
+المحامية المستقبلية ⚖️✨
+</p>
+</div>
+<script>
+const evidenceLines = [
+"📚 الدليل الأول: ساعات طويلة من الدراسة",
+"🌙 الدليل الثاني: ليالٍ من السهر والتعب",
+"✍️ الدليل الثالث: مواجهة الامتحانات بشجاعة",
+"💪 الدليل الرابع: عدم الاستسلام مهما كانت الظروف",
+"⚖️ تمت مراجعة جميع الأدلة..."
+];
+function startCourt(){
+document.getElementById("music").play().catch(()=>{});
+document.getElementById("start").classList.remove("active");
+document.getElementById("court").classList.add("active");
+let i=0;
+const box=document.getElementById("evidence");
+const interval=setInterval(()=>{
+box.innerHTML += evidenceLines[i] + "<br><br>";
+i++;
+if(i>=evidenceLines.length){
+clearInterval(interval);
+setTimeout(showJudge,2500);
+}
+},1800);
+}
+function showJudge(){
+document.getElementById("court").classList.remove("active");
+document.getElementById("judge").classList.add("active");
+setTimeout(showCertificate,5000);
+}
+function showCertificate(){
+document.getElementById("judge").classList.remove("active");
+document.getElementById("certificate").classList.add("active");
+setTimeout(showFinal,6000);
+}
+function showFinal(){
+document.getElementById("certificate").classList.remove("active");
+document.getElementById("final").classList.add("active");
+for(let i=0;i<250;i++){
+const c=document.createElement("div");
+c.className="confetti";
+c.innerHTML=
+["🎉","✨","⚖️","🏆","🌹"][Math.floor(Math.random()*5)];
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),5000);
+}
+}
+</script>
+</body>
+</html>
